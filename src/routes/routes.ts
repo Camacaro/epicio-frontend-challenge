@@ -1,6 +1,7 @@
 // import { lazy } from 'react';
 import { LazyExoticComponent } from 'react';
 import { AboutPage } from '../pages/AboutPage';
+// import { VideoPage } from '../pages/VideoPage';
 import { VideoPage } from '../pages/VideoPage';
 
 type JSXComponent = () => JSX.Element;

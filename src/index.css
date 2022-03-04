@@ -1,6 +1,6 @@
-html {
+/* html {
   background-color: #4e88c7;
-}
+} */
 
 body {
   margin: 0;
@@ -14,4 +14,35 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.MainLayout {
+  display: 'flex';
+  height: '100%';
+  overflow: 'hidden';
+  width: '100%';
+}
+
+.MainLayout__wrapper {
+  display: 'flex';
+    flex: '1 1 auto';
+    overflow: 'hidden';
+    paddingTop: 64;
+}
+
+.MainLayout__wrapper__contentContainer {
+  display: 'flex';
+  flex: '1 1 auto';
+  overflow: 'hidden';
+}
+
+.MainLayout__wrapper__contentContainer__content {
+  flex: '1 1 auto';
+  height: '100%';
+  overflow: 'auto';
+}
+
+.react-player__preview {
+  max-height: 400px!important;
+  height: 400px!important;
 }
