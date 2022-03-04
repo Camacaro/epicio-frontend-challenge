@@ -4,25 +4,14 @@ import {
   Toolbar,
   Link,
   Divider,
-  SxProps,
-  Theme
 } from '@mui/material';
 import { 
   Link as RouterLink,
 } from 'react-router-dom';
-
-const styleLink: SxProps<Theme> = [
-  {
-    color: 'white',
-  },
-  (theme: Theme) => ({
-    '&:hover': {
-      color: theme.palette.secondary.main
-    },
-  })
-]
+import { useStyle } from '../hooks/useStyle';
 
 export const MainNavbar = () => {
+  const { styleDivider, styleLink } = useStyle()
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -43,14 +32,7 @@ export const MainNavbar = () => {
           </Link>
 
           <Divider 
-            sx={{
-              color: 'white',
-              width: 0.001,
-              backgroundColor: 'white',
-              height: 15,
-              marginLeft: 2,
-              marginRight: 2,
-            }}
+            sx={styleDivider}
           />
 
           <Link

@@ -1,7 +1,11 @@
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Navigation } from './routes/Navigation';
+import { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import './App.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import { MainLayout } from './layout';
+import { Navigation } from './routes/Navigation';
+import { LoadingScreen } from './components/LoadingScreen';
 
 const theme = createTheme({
   palette: {
@@ -14,12 +18,17 @@ const theme = createTheme({
   },
 });
 
-
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navigation />
+         <Suspense fallback={<LoadingScreen />} >
+          <BrowserRouter>
+            <MainLayout>
+              <Navigation />
+            </MainLayout>
+          </BrowserRouter>
+        </Suspense>
       </ThemeProvider>
     </>
   );

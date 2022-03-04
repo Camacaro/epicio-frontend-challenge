@@ -1,4 +1,7 @@
-import { lazy, LazyExoticComponent } from 'react';
+// import { lazy } from 'react';
+import { LazyExoticComponent } from 'react';
+import { AboutPage } from '../pages/AboutPage';
+import { VideoPage } from '../pages/VideoPage';
 
 type JSXComponent = () => JSX.Element;
 
@@ -9,20 +12,27 @@ interface Route {
   name: string;
 }
 
-const VideoPageLazy = lazy(() => import('../pages/VideoPage'));
-const AboutPageLazy = lazy(() => import('../pages/AboutPage'));
+/**
+ * Se puede usar lazy para que se cargue solo cuando se necesite
+ * pero por ser un proyecto pequeño no es necesario
+ * 
+ * Sin embargo dejo la forma y configuracion de usarlo por si se necesita en un futuro
+ */
+
+// const VideoPageLazy = lazy(() => import('../pages/VideoPage'));
+// const AboutPageLazy = lazy(() => import('../pages/AboutPage'));
 
 export const routes: Route[] = [
   {
     to: '/about',
     path: 'about',
-    Component: AboutPageLazy,
+    Component: AboutPage,
     name: 'About Project',
   },
   {
     to: '/video',
     path: 'video',
-    Component: VideoPageLazy,
+    Component: VideoPage,
     name: 'Videos',
   },
 ]
