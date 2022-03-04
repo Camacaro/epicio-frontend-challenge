@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { MainLayout } from './layout';
 import { Navigation } from './routes/Navigation';
 import { LoadingScreen } from './components/LoadingScreen';
+import { VideoProvider } from './context/VideoContext';
 
 const theme = createTheme({
   palette: {
@@ -28,13 +29,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Suspense fallback={<LoadingScreen />} >
-      <BrowserRouter>
-        <MainLayout>
-          <Navigation />
-        </MainLayout>
-      </BrowserRouter>
-    </Suspense>
-  </ThemeProvider>
+        <BrowserRouter>
+          <MainLayout>
+            <VideoProvider>
+              <Navigation />
+            </VideoProvider>
+          </MainLayout>
+        </BrowserRouter>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 

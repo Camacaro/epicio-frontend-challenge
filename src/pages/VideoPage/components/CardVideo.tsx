@@ -11,8 +11,7 @@ import {
   CardActions,
   Button
 } from "@mui/material";
-
-const MAX_LENGTH_DESCRIPTION = 100;
+import { MAX_LENGTH_DESCRIPTION } from '../../../ts/constant';
 
 export const CardVideo = () => {
   const [showMoreDescription, setShowMoreDescription] = useState(false);
