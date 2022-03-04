@@ -30,9 +30,19 @@ export const useStyle = () => {
     backgroundColor: 'background.paper',
   }
 
+  const stylePage: SxProps<Theme> = [
+    (theme: Theme) => ({
+      backgroundColor: theme.palette.background.paper,
+      minHeight: '100%',
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(3)
+    })
+  ]
+
   return {
     styleLink,
     styleDivider,
-    styleLoading
+    styleLoading,
+    stylePage
   }
 }

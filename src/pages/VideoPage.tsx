@@ -1,7 +1,13 @@
+import { Typography } from "@mui/material";
+import { Page } from "../components/Page";
 
 export const VideoPage = () => {
   return (
-    <div>VideoPage</div>
+    <>
+      <Page title="Video">
+        <Typography  >Hola mund</Typography>
+      </Page>
+    </>
   )
 }
 

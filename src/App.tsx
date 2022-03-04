@@ -14,23 +14,27 @@ const theme = createTheme({
     },
     secondary: {
       main: '#4776e6',
+    },
+    background: {
+      paper: '#4e88c7',
+    },
+    text: {
+      primary: '#ffffff',
     }
   },
 });
 
 function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-         <Suspense fallback={<LoadingScreen />} >
-          <BrowserRouter>
-            <MainLayout>
-              <Navigation />
-            </MainLayout>
-          </BrowserRouter>
-        </Suspense>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <Suspense fallback={<LoadingScreen />} >
+      <BrowserRouter>
+        <MainLayout>
+          <Navigation />
+        </MainLayout>
+      </BrowserRouter>
+    </Suspense>
+  </ThemeProvider>
   );
 }
 
