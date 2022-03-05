@@ -52,11 +52,22 @@ export const useStyle = () => {
     })
   ]
 
+  const controlIcons: SxProps<Theme> = {
+    color: "#777",
+    fontSize: 50,
+    transform: "scale(0.9)",
+    "&:hover": {
+      color: "#fff",
+      transform: "scale(1)",
+    },
+  }
+
   return {
     styleLink,
     styleDivider,
     styleLoading,
     stylePage,
-    styleListCardVideo
+    styleListCardVideo,
+    controlIcons
   }
 }

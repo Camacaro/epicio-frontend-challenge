@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { 
   Typography,  
@@ -9,19 +9,28 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-  Button
+  Button,
+  Grid
 } from "@mui/material";
-import { MAX_LENGTH_DESCRIPTION } from '../../../ts/constant';
-import { CardVideoProps } from '../../../ts/interfaces';
+
+import { MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
+import { CardVideoProps, IHandleSettings } from '../../../../ts/interfaces';
+import { TitleSetting } from './components/TitleSetting';
+// import { RewinPauseForward } from './components/RewinPauseForward';
+// import { Control } from './components/Control';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
   const [showMoreDescription, setShowMoreDescription] = useState(false);
 
+  const controlsRef = useRef<HTMLDivElement>(null);
+
   const [state, setState] = useState({
-    playing: false
+    playing: false,
+    brightness: 1,
+    contrast: 1,
   })
 
-  const { playing } = state;
+  const { playing, brightness, contrast } = state;
   const { description, thumb, sources, title } = video;
 
   const onEnded = () => {
@@ -41,10 +50,38 @@ export const CardVideo = ({ video }: CardVideoProps) => {
 
   const onClickShowMore = () => setShowMoreDescription(!showMoreDescription);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if(!controlsRef.current) return;
+
+    controlsRef.current.style.visibility = "visible";
+  }
+
+  const hanldeMouseLeave = () => {
+    if(!controlsRef.current) return;
+
+    controlsRef.current.style.visibility = "hidden";
+    // count = 0;
+  };
+
+  const handleSettings = (setting: IHandleSettings) => {
+    setState(prev => ({
+      ...prev,
+      brightness: setting.brightness,
+      contrast: setting.contrast,
+    }));
+  }
+
   return (
     <Card elevation={0}> 
 
-      <CardMedia>
+      <CardMedia 
+        id="card-media-player"
+        sx={{
+          position: 'relative',
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={hanldeMouseLeave}
+      >
         <ReactPlayer 
           url={sources[0]}
           width={'100%'}
@@ -58,7 +95,34 @@ export const CardVideo = ({ video }: CardVideoProps) => {
           onDisablePIP={() => console.log('on Disable PIP')}
           onEnablePIP={() => console.log('on Enable PIP')}
           onProgress={(e) => console.log('on Progress', e)}
+          style={{
+            filter: `brightness(${brightness}) contrast(${contrast})`,
+          }}
         />
+        
+        <div 
+          className='CardMedia__ControlsWrapper'
+          ref={controlsRef}
+        >
+          <Grid
+            container
+            direction="column"
+            justifyContent={'space-between'}
+            style={{ flexGrow: 1 }}
+          >
+            <TitleSetting
+              title={title}
+              handleSettings={handleSettings}
+              defaultBrightness={brightness}
+              defaultContrast={contrast}
+            />
+
+            {/* <RewinPauseForward /> */}
+
+            {/* <Control /> */}
+          </Grid>
+        </div>
+
       </CardMedia>
 
       <CardContent>

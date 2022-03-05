@@ -32,3 +32,15 @@ export interface ListCardVideoProps {
 export interface CardVideoProps {
   video: VideoData
 }
+
+export interface IHandleSettings {
+  brightness: number,
+  contrast: number
+}
+
+export interface ITitleSettingProps {
+  title: string;
+  handleSettings: (setting: IHandleSettings) => void;
+  defaultBrightness: number;
+  defaultContrast: number;
+}

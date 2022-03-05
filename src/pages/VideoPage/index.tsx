@@ -5,7 +5,7 @@ import {
 import { Page } from "../../components/Page";
 import { SkeletonVideo } from "../../components/SkeletonVideo";
 import { useVideoContext } from "../../context/VideoContext";
-import { CardVideo } from "./components/CardVideo";
+import { CardVideo } from "./components/CardVideo/index";
 import { ListCardVideo } from './components/ListCardVideo';
 
 export const VideoPage = () => {
