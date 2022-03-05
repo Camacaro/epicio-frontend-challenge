@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { 
   Typography,  
@@ -12,23 +12,17 @@ import {
   Button
 } from "@mui/material";
 import { MAX_LENGTH_DESCRIPTION } from '../../../ts/constant';
+import { CardVideoProps } from '../../../ts/interfaces';
 
-export const CardVideo = () => {
+export const CardVideo = ({ video }: CardVideoProps) => {
   const [showMoreDescription, setShowMoreDescription] = useState(false);
 
   const [state, setState] = useState({
-    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    playing: false,
-    thumb: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
-    description: "ig Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.\n\nLicensed under the Creative Commons Attribution license\nhttps://www.bigbuckbunny.org"
+    playing: false
   })
 
-  const { url, playing, thumb, description } = state;
-
-  useEffect(() => {
-    
-  }, [showMoreDescription])
-  
+  const { playing } = state;
+  const { description, thumb, sources, title } = video;
 
   const onEnded = () => {
     console.log('Termino el video')
@@ -51,7 +45,7 @@ export const CardVideo = () => {
 
       <CardMedia>
         <ReactPlayer 
-          url={url}
+          url={sources[0]}
           width={'100%'}
           height={'100%'}
           controls
@@ -65,7 +59,7 @@ export const CardVideo = () => {
 
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" color={"primary"}>
-          Big Buck Bunny
+          {title}
         </Typography>
 
         <Divider />

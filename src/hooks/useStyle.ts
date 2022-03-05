@@ -39,10 +39,24 @@ export const useStyle = () => {
     })
   ]
 
+  const styleListCardVideo: SxProps<Theme> = [
+    {
+      display: 'flex', 
+      maxWidth: '400px',
+      width: '100%',
+    },
+    (theme: Theme) => ({
+      '&:hover': {
+        cursor: 'pointer'
+      },
+    })
+  ]
+
   return {
     styleLink,
     styleDivider,
     styleLoading,
-    stylePage
+    stylePage,
+    styleListCardVideo
   }
 }

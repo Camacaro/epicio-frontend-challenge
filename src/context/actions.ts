@@ -10,3 +10,8 @@ export const doSaveNameCategory = (name: string): VideoActionReducer => ({
   type: 'SET_NAME_CATEGORY',
   payload: name,
 })
+
+export const doAssignVideo = (video: VideoData): VideoActionReducer => ({
+  type: 'SET_CURRENT_VIDEO',
+  payload: video,
+})

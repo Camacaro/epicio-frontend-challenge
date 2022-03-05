@@ -2,18 +2,25 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import { useService } from '../hooks/useService';
 import { URL_API } from '../ts/constant';
-import { VideoInitialStateContext, VideoProviderProps } from '../ts/interfaces';
-import { doSaveNameCategory, doSaveVideo } from './actions';
+import { VideoInitialStateContext, VideoProviderProps, VideoData } from '../ts/interfaces';
+import { doAssignVideo, doSaveNameCategory, doSaveVideo } from './actions';
 import { VideoReducer } from './VideoReducer';
 
 const initialState: VideoInitialStateContext = {
   name: '',
   videoList: [],
+  currentVideo: {
+    description: '',
+    sources: [],
+    thumb: '',
+    title: ''
+  }
 }
 
 const contextProps = {
   videoState: initialState,
-  isLoading: true
+  isLoading: true,
+  assignVideo: (video: VideoData) => {},
 }
 
 const VideoContext = createContext(contextProps);
@@ -27,19 +34,22 @@ export const VideoProvider = ({ children }: VideoProviderProps) => {
 
   useEffect(() => {
     if(data?.categories) {
-      const videos = data?.categories[0].videos
+      const videos: VideoData[] = data?.categories[0].videos
       const name = data?.categories[0].name
 
       dispatch( doSaveVideo(videos) );
       dispatch( doSaveNameCategory(name) );
+      dispatch( doAssignVideo(videos[0]) );
     }
   }, [isLoading])
 
+  const assignVideo = (video: VideoData) => dispatch( doAssignVideo(video) );
 
   return (
     <VideoContext.Provider value={{ 
-      videoState ,
-      isLoading
+      videoState,
+      isLoading,
+      assignVideo
     }}>
       {children}
     </VideoContext.Provider>

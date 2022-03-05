@@ -15,6 +15,7 @@ export interface VideoData {
 export interface VideoInitialStateContext {
   name: string,
   videoList: VideoData[],
+  currentVideo: VideoData,
 }
 
 export interface IuseService {
@@ -25,4 +26,9 @@ export interface IuseService {
 
 export interface ListCardVideoProps {
   video: VideoData,
+  handleChengeVideo: (video: VideoData) => void,
+}
+
+export interface CardVideoProps {
+  video: VideoData
 }

@@ -15,6 +15,12 @@ export const VideoReducer = (state:VideoInitialStateContext, action:VideoActionR
         ...state,
         name: action.payload
       }
+
+    case "SET_CURRENT_VIDEO":
+      return {
+        ...state,
+        currentVideo: action.payload
+      }
     
 
     default:

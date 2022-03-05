@@ -10,8 +10,8 @@ import { CardVideo } from "./components/CardVideo";
 import { ListCardVideo } from './components/ListCardVideo';
 
 export const VideoPage = () => {
-  const { isLoading, videoState } = useVideoContext();
-  const { videoList } = videoState;
+  const { isLoading, videoState, assignVideo } = useVideoContext();
+  const { videoList, currentVideo } = videoState;
 
   if(isLoading) {
     return <SkeletonVideo />
@@ -27,7 +27,7 @@ export const VideoPage = () => {
         >
 
           <Grid item lg={8} xl={8} xs={12}>
-            <CardVideo />
+            <CardVideo video={currentVideo} />
           </Grid>
 
           {/* <Grid item lg={8} xl={9} xs={12}>
@@ -40,8 +40,8 @@ export const VideoPage = () => {
                 display: 'flex',
                 justifyContent: 'end',
               }}>
-                <Box marginY={1}>
-                  <ListCardVideo video={video} />
+                <Box >
+                  <ListCardVideo video={video} handleChengeVideo={assignVideo} />
                 </Box>
               </Box>
             ))}
