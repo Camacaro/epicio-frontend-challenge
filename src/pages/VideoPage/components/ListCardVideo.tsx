@@ -7,16 +7,14 @@ import {
   Typography,
   CardActionArea 
 } from '@mui/material';
-// import { useTheme } from '@mui/material/styles';
-import {
-  PlayArrow as PlayArrowIcon,
-} from '@mui/icons-material';
+
+import { PlayArrow as PlayArrowIcon } from '@mui/icons-material';
+
 import { ListCardVideoProps } from '../../../ts/interfaces';
 import { useStyle } from '../../../hooks/useStyle';
 
 export const ListCardVideo = ({ video, handleChengeVideo }: ListCardVideoProps) => {
   const { styleListCardVideo } = useStyle();
-  // const theme = useTheme();
 
   const onClick = () => {
     handleChengeVideo(video);

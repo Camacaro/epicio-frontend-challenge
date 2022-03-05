@@ -25,7 +25,8 @@ export const CardVideo = ({ video }: CardVideoProps) => {
   const { description, thumb, sources, title } = video;
 
   const onEnded = () => {
-    console.log('Termino el video')
+    // TODO aGregar el siguiente video
+    console.log('Termino el video - agregar el cambio de video')
   }
 
   const onClickPreview = () => {
@@ -49,11 +50,14 @@ export const CardVideo = ({ video }: CardVideoProps) => {
           width={'100%'}
           height={'100%'}
           controls
-          stopOnUnmount={false}
+          stopOnUnmount={true}
           light={thumb}
           onEnded={onEnded}
           onClickPreview={onClickPreview}
           playing={playing}
+          onDisablePIP={() => console.log('on Disable PIP')}
+          onEnablePIP={() => console.log('on Enable PIP')}
+          onProgress={(e) => console.log('on Progress', e)}
         />
       </CardMedia>
 

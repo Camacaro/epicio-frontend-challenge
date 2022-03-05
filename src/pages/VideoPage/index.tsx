@@ -5,7 +5,6 @@ import {
 import { Page } from "../../components/Page";
 import { SkeletonVideo } from "../../components/SkeletonVideo";
 import { useVideoContext } from "../../context/VideoContext";
-// import { CardDescriptionVideo } from "./components/CardDescriptionVideo";
 import { CardVideo } from "./components/CardVideo";
 import { ListCardVideo } from './components/ListCardVideo';
 
@@ -29,10 +28,6 @@ export const VideoPage = () => {
           <Grid item lg={8} xl={8} xs={12}>
             <CardVideo video={currentVideo} />
           </Grid>
-
-          {/* <Grid item lg={8} xl={9} xs={12}>
-            <CardDescriptionVideo />
-          </Grid> */}
 
           <Grid item lg={4} xl={4} xs={12}>
             {videoList.map((video, index) => (

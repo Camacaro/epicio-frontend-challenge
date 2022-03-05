@@ -28,7 +28,7 @@ export const MainNavbar = () => {
             underline="none"
             sx={styleLink}
           >
-            About Project
+            Sobre el Proyecto
           </Link>
 
           <Divider 

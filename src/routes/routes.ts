@@ -28,7 +28,7 @@ export const routes: Route[] = [
     to: '/about',
     path: 'about',
     Component: AboutPage,
-    name: 'About Project',
+    name: 'Sobre el Proyecto',
   },
   {
     to: '/video',
