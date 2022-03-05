@@ -64,5 +64,15 @@ code {
 }
 
 .css-4w3m95-MuiPaper-root-MuiPopover-paper {
-  background: transparent!important;
+  /* background: transparent!important; */
+  background: rgba(0,0,0,0.6)!important;
+}
+
+.BottomControls__BottomIcons {
+  color: #777!important;
+  transform: scale(0.9);
+}
+
+.BottomControls__BottomIcons:hover {
+  color: #fff!important;
 }

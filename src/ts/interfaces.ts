@@ -39,6 +39,7 @@ export interface IHandleSettings {
 }
 
 export interface ITitleSettingProps {
+  refParentContainer: any;
   title: string;
   handleSettings: (setting: IHandleSettings) => void;
   defaultBrightness: number;

@@ -20,7 +20,8 @@ export const TitleSetting = ({
   title,
   defaultBrightness,
   defaultContrast,
-  handleSettings 
+  refParentContainer,
+  handleSettings,
 }: ITitleSettingProps) => {
 
   const [anchorEl, setAnchorEl] = useState<any>(null);
@@ -78,6 +79,7 @@ export const TitleSetting = ({
       </Grid>
 
       <Popover 
+        container={refParentContainer.current}
         open={isOpenPopover}
         anchorEl={anchorEl}
         onClose={handleClosePopover}
@@ -98,7 +100,7 @@ export const TitleSetting = ({
             
           }}>
             <Stack spacing={2} direction="row" sx={{ mb: 1, mt: 1, mr: 3}} alignItems="center" >
-              <BrightnessLowIcon />
+              <BrightnessLowIcon sx={{ ml: 1}} />
                 <Slider
                   aria-label="brightness" 
                   value={brightness} 
@@ -108,7 +110,7 @@ export const TitleSetting = ({
             </Stack>
 
             <Stack spacing={2} direction="row" sx={{ mb: 1, mr: 3 }} alignItems="center" >
-              <ContrastIcon />
+              <ContrastIcon sx={{ ml: 1}} />
               <Slider
                 aria-label="contrast" 
                 value={contrast} 
