@@ -52,7 +52,6 @@ export const CardVideo = ({ video }: CardVideoProps) => {
   }
 
   const onClickPreview = () => {
-    console.log('Click en preview')
     setState(prev => ({
       ...prev, 
       playing: !prev.playing,
@@ -116,7 +115,6 @@ export const CardVideo = ({ video }: CardVideoProps) => {
   const handleDuration = (duration: number) => setState({ ...state, duration });
 
   const handleProgress = (changeState: IReactPlayerOnprogress) => {
-    console.log('handleProgress', changeState);
     if (countRef.current > 3) {
       controlsRef.current.style.visibility = STYLE_HIDDEN;
       countRef.current = 0;
