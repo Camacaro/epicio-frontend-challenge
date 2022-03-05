@@ -9,7 +9,7 @@ import {
 
 import { useStyle } from '../../../../../hooks/useStyle';
 
-export const Control = () => {
+export const BottomControls = () => {
   const {controlIcons} = useStyle()
 
   return (

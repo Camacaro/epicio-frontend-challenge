@@ -44,3 +44,10 @@ export interface ITitleSettingProps {
   defaultBrightness: number;
   defaultContrast: number;
 }
+
+export interface IRewinPauseForwardProps {
+  playing: boolean;
+  onPlayPause: () => void;
+  onRewind: () => void;
+  onFastForward: () => void;
+}

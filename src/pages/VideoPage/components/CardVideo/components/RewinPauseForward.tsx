@@ -8,16 +8,24 @@ import {
   Pause as PauseIcon,
   PlayArrow as PlayArrowIcon,
 } from '@mui/icons-material';
-import { useStyle } from "../../../../../hooks/useStyle";
 
-export const RewinPauseForward = () => {
+import { useStyle } from "../../../../../hooks/useStyle";
+import { IRewinPauseForwardProps } from "../../../../../ts/interfaces";
+
+
+export const RewinPauseForward = ({
+  playing,
+  onPlayPause,
+  onRewind,
+  onFastForward,
+}: IRewinPauseForwardProps) => {
+
   const {controlIcons} = useStyle()
-  let playing = false;
 
   return (
     <Grid container direction="row" alignItems="center" justifyContent="center">
       <IconButton
-        // onClick={onRewind}
+        onClick={onRewind}
         sx={controlIcons}
         aria-label="rewind"
       >
@@ -27,7 +35,7 @@ export const RewinPauseForward = () => {
         />
       </IconButton>
       <IconButton
-        // onClick={onPlayPause}
+        onClick={onPlayPause}
         sx={controlIcons}
         aria-label="play"
       >
@@ -38,7 +46,7 @@ export const RewinPauseForward = () => {
         )}
       </IconButton>
       <IconButton
-        // onClick={onFastForward}
+        onClick={onFastForward}
         sx={controlIcons}
         aria-label="forward"
       >

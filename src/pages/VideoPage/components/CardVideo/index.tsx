@@ -13,13 +13,14 @@ import {
   Grid
 } from "@mui/material";
 
-import { MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
+import { SECONDS_10, MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
 import { CardVideoProps, IHandleSettings } from '../../../../ts/interfaces';
 import { TitleSetting } from './components/TitleSetting';
-// import { RewinPauseForward } from './components/RewinPauseForward';
-// import { Control } from './components/Control';
+import { RewinPauseForward } from './components/RewinPauseForward';
+import { BottomControls } from './components/BottomControls';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
+  const playerRef = useRef<any>(null);
   const [showMoreDescription, setShowMoreDescription] = useState(false);
 
   const controlsRef = useRef<HTMLDivElement>(null);
@@ -28,9 +29,10 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     playing: false,
     brightness: 1,
     contrast: 1,
+    oneTimeLight: false,
   })
 
-  const { playing, brightness, contrast } = state;
+  const { playing, brightness, contrast, oneTimeLight } = state;
   const { description, thumb, sources, title } = video;
 
   const onEnded = () => {
@@ -40,7 +42,11 @@ export const CardVideo = ({ video }: CardVideoProps) => {
 
   const onClickPreview = () => {
     console.log('Click en preview')
-    setState(prev => ({...prev, playing: !prev.playing}))
+    setState(prev => ({
+      ...prev, 
+      playing: !prev.playing,
+      oneTimeLight: true
+    }))
   }
 
   const cutDescription = () => {
@@ -71,6 +77,17 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     }));
   }
 
+  const handlePlayPause = () => setState(prev => ({...prev, playing: !prev.playing, oneTimeLight: true}));
+
+  const isLight = () => {
+    if(playing) return false;
+    if(!oneTimeLight) return thumb;
+    return false;
+  }
+
+  const handleRewind = () => playerRef.current.seekTo(playerRef.current.getCurrentTime() - SECONDS_10);
+  const handleFastForward = () => playerRef.current.seekTo(playerRef.current.getCurrentTime() + SECONDS_10);;
+
   return (
     <Card elevation={0}> 
 
@@ -83,12 +100,13 @@ export const CardVideo = ({ video }: CardVideoProps) => {
         onMouseLeave={hanldeMouseLeave}
       >
         <ReactPlayer 
+          ref={playerRef}
           url={sources[0]}
           width={'100%'}
           height={'100%'}
           controls
           stopOnUnmount={true}
-          light={thumb}
+          light={isLight()}
           onEnded={onEnded}
           onClickPreview={onClickPreview}
           playing={playing}
@@ -117,9 +135,14 @@ export const CardVideo = ({ video }: CardVideoProps) => {
               defaultContrast={contrast}
             />
 
-            {/* <RewinPauseForward /> */}
+            <RewinPauseForward
+              playing={playing}
+              onPlayPause={handlePlayPause}
+              onRewind={handleRewind}
+              onFastForward={handleFastForward}
+            />
 
-            {/* <Control /> */}
+            <BottomControls />
           </Grid>
         </div>
 
