@@ -22,3 +22,7 @@ export interface IuseService {
   method?: Method;
   headers?: AxiosRequestHeaders;
 }
+
+export interface ListCardVideoProps {
+  video: VideoData,
+}

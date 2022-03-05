@@ -13,6 +13,7 @@ const initialState: VideoInitialStateContext = {
 
 const contextProps = {
   videoState: initialState,
+  isLoading: true
 }
 
 const VideoContext = createContext(contextProps);
@@ -37,7 +38,8 @@ export const VideoProvider = ({ children }: VideoProviderProps) => {
 
   return (
     <VideoContext.Provider value={{ 
-      videoState 
+      videoState ,
+      isLoading
     }}>
       {children}
     </VideoContext.Provider>
