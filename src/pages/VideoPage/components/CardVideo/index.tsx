@@ -14,25 +14,36 @@ import {
 } from "@mui/material";
 
 import { SECONDS_10, MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
-import { CardVideoProps, IHandleSettings } from '../../../../ts/interfaces';
+import { CardVideoProps, IHandleSettings, IReactPlayerOnprogress } from '../../../../ts/interfaces';
 import { TitleSetting } from './components/TitleSetting';
 import { RewinPauseForward } from './components/RewinPauseForward';
 import { BottomControls } from './components/BottomControls';
+import { format } from './utils/format';
+
+export const TIME_DISPLAY_NORNAL = 'normal';
+export const TIME_DISPLAY_REMAINING = 'remaining';
+export const STYLE_VISIBLE = 'visible';
+export const STYLE_HIDDEN = 'hidden';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
   const playerRef = useRef<any>(null);
+  const countRef = useRef<number>(0);
   const [showMoreDescription, setShowMoreDescription] = useState(false);
+  const [timeDisplayFormat, setTimeDisplayFormat] = useState(TIME_DISPLAY_NORNAL);
 
-  const controlsRef = useRef<HTMLDivElement>(null);
+  const controlsRef = useRef<any>(null); // HTMLDivElement
 
   const [state, setState] = useState({
     playing: false,
     brightness: 1,
     contrast: 1,
     oneTimeLight: false,
+    played: 0,
+    seeking: false,
+    duration: 0,
   })
 
-  const { playing, brightness, contrast, oneTimeLight } = state;
+  const { playing, brightness, contrast, oneTimeLight, played } = state;
   const { description, thumb, sources, title } = video;
 
   const onEnded = () => {
@@ -57,16 +68,13 @@ export const CardVideo = ({ video }: CardVideoProps) => {
   const onClickShowMore = () => setShowMoreDescription(!showMoreDescription);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(!controlsRef.current) return;
-
-    controlsRef.current.style.visibility = "visible";
+    controlsRef.current.style.visibility = STYLE_VISIBLE;
+    countRef.current = 0;
   }
 
   const hanldeMouseLeave = () => {
-    if(!controlsRef.current) return;
-
-    controlsRef.current.style.visibility = "hidden";
-    // count = 0;
+    controlsRef.current.style.visibility = STYLE_HIDDEN;
+    countRef.current = 0;
   };
 
   const handleSettings = (setting: IHandleSettings) => {
@@ -77,7 +85,6 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     }));
   }
 
-  const handlePlayPause = () => setState(prev => ({...prev, playing: !prev.playing, oneTimeLight: true}));
 
   const isLight = () => {
     if(playing) return false;
@@ -85,8 +92,46 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     return false;
   }
 
+  const handlePlayPause = () => setState(prev => ({...prev, playing: !prev.playing, oneTimeLight: true}));
   const handleRewind = () => playerRef.current.seekTo(playerRef.current.getCurrentTime() - SECONDS_10);
-  const handleFastForward = () => playerRef.current.seekTo(playerRef.current.getCurrentTime() + SECONDS_10);;
+  const handleFastForward = () => playerRef.current.seekTo(playerRef.current.getCurrentTime() + SECONDS_10);
+
+  const handleDisplayFormat = () => {
+    setTimeDisplayFormat(
+      timeDisplayFormat === TIME_DISPLAY_NORNAL ? TIME_DISPLAY_REMAINING : TIME_DISPLAY_NORNAL
+    );
+  };
+
+  const handleSeekMouseUp = (e:any, newValue: any) => {
+    setState({ ...state, seeking: false });
+    playerRef.current.seekTo(newValue / 100, "fraction");
+  };
+
+  const handleSeekChange = (e: any, newValue: string) => {
+    const newTime = Number(newValue) / 100;
+    setState({ ...state, played: parseFloat(newTime.toString()) });
+  };
+
+  const handleSeekMouseDown = (e: any) => setState({ ...state, seeking: true });
+  const handleDuration = (duration: number) => setState({ ...state, duration });
+
+  const handleProgress = (changeState: IReactPlayerOnprogress) => {
+    console.log('handleProgress', changeState);
+    if (countRef.current > 3) {
+      controlsRef.current.style.visibility = STYLE_HIDDEN;
+      countRef.current = 0;
+    }
+    if (controlsRef.current.style.visibility === STYLE_VISIBLE) {
+      countRef.current += 1;
+    }
+    if (!state.seeking) {
+      setState(prev => ({ ...prev, ...changeState }));
+    }
+  };
+
+  const currentTime = (playerRef && playerRef.current) ? playerRef.current.getCurrentTime() : "00:00";
+  const duration = (playerRef && playerRef.current) ? playerRef.current.getDuration() : "00:00";
+  const elapsedTime = (timeDisplayFormat === TIME_DISPLAY_NORNAL) ? format(currentTime) : `-${format(duration - currentTime)}`;
 
   return (
     <Card elevation={0}> 
@@ -104,7 +149,7 @@ export const CardVideo = ({ video }: CardVideoProps) => {
           url={sources[0]}
           width={'100%'}
           height={'100%'}
-          controls
+          controls={false}
           stopOnUnmount={true}
           light={isLight()}
           onEnded={onEnded}
@@ -112,7 +157,7 @@ export const CardVideo = ({ video }: CardVideoProps) => {
           playing={playing}
           onDisablePIP={() => console.log('on Disable PIP')}
           onEnablePIP={() => console.log('on Enable PIP')}
-          onProgress={(e) => console.log('on Progress', e)}
+          onProgress={handleProgress}
           style={{
             filter: `brightness(${brightness}) contrast(${contrast})`,
           }}
@@ -142,7 +187,15 @@ export const CardVideo = ({ video }: CardVideoProps) => {
               onFastForward={handleFastForward}
             />
 
-            <BottomControls />
+            <BottomControls
+              played={played}
+              elapsedTime={elapsedTime}
+              onSeek={handleSeekChange}
+              onSeekMouseDown={handleSeekMouseDown}
+              onChangeDispayFormat={handleDisplayFormat}
+              onSeekMouseUp={handleSeekMouseUp}
+              onDuration={handleDuration}
+            />
           </Grid>
         </div>
 

@@ -51,3 +51,10 @@ export interface IRewinPauseForwardProps {
   onRewind: () => void;
   onFastForward: () => void;
 }
+
+export interface IReactPlayerOnprogress {
+  loaded: number
+  loadedSeconds: number
+  played: number
+  playedSeconds: number
+}
