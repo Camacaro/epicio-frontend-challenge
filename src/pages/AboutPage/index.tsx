@@ -46,7 +46,7 @@ export const AboutPage = () => {
           />
 
           <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
-            <ArrowRight /> &nbsp; Para el video usé la libreria  &nbsp; <Link href="https://www.npmjs.com/package/react-player" target={'_blank'} sx={{ color: 'white' }}> "react-player", pero hice su controlador. </Link>
+            <ArrowRight /> &nbsp; Para el video usé la libreria  &nbsp; <Link href="https://www.npmjs.com/package/react-player" target={'_blank'} sx={{ color: 'white' }}> "react-player" </Link>, pero hice su controlador.
           </Typography>
 
           <Description
