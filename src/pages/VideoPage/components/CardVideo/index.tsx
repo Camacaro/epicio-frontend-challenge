@@ -24,6 +24,10 @@ import { MiddleButtonControl } from './components/MiddleButtonControl';
 import { FastRewind } from './components/MiddleButtonControl/FastRewind';
 import { PlayArrow } from './components/MiddleButtonControl/PlayArrow';
 import { FastForward } from './components/MiddleButtonControl/FastForward';
+import { BottomButtonControl } from './components/BottomButtonControl';
+import { ProgressBar } from './components/BottomButtonControl/ProgressBar';
+import { VolumeAndDuration } from './components/BottomButtonControl/VolumeAndDuration';
+import { RateAndFullscreen } from './components/BottomButtonControl/RateAndFullscreen';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
   const {
@@ -121,14 +125,32 @@ export const CardVideo = ({ video }: CardVideoProps) => {
               <FastForward onFastForward={handleFastForward} />
             </MiddleButtonControl>
 
-            <RewinPauseForward
-              playing={playing}
-              onPlayPause={handlePlayPause}
-              onRewind={handleRewind}
-              onFastForward={handleFastForward}
-            />
+            <BottomButtonControl>
+              <ProgressBar
+                played={played}
+                onMutateState={updateState}
+                onSeekMouseUp={handleSeekMouseUp}
+              />
 
-            <BottomControls
+              <VolumeAndDuration 
+                playing={playing}
+                muted={muted}
+                volume={volume}
+                onChangeDispayFormat={handleDisplayFormat}
+                onMutateState={updateState}
+                elapsedTime={elapsedTime}
+                totalDuration={totalDuration}
+              />
+
+              <RateAndFullscreen
+                playbackRate={playbackRate}
+                refParentContainer={playerContainerRef}
+                onMutateState={updateState}
+                onToggleFullScreen={toggleFullScreen}
+              />
+            </BottomButtonControl>
+
+            {/* <BottomControls
               refParentContainer={playerContainerRef}
               playing={playing}
               played={played}
@@ -148,7 +170,7 @@ export const CardVideo = ({ video }: CardVideoProps) => {
               onVolumeSeekDown={handleVolumeSeekDown}
               onPlaybackRateChange={handlePlaybackRate}
               onToggleFullScreen={toggleFullScreen}
-            />
+            /> */}
           </Grid>
         </div>
 

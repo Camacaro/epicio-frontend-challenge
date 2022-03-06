@@ -131,3 +131,26 @@ export interface IPlayArrowProps {
 export interface IFastForwardProps {
   onFastForward: () => void;
 }
+
+export interface IProgressBarProps {
+  played: number;
+  onMutateState: TOnMutateState; 
+  onSeekMouseUp: (e: any, newValue: any) => void;
+}
+
+export interface IVolumeAndDurationProps {
+  playing: boolean;
+  muted: boolean;
+  volume: number;
+  onChangeDispayFormat: () => void;
+  onMutateState: TOnMutateState;
+  elapsedTime: string;
+  totalDuration: string;
+}
+
+export interface IRateAndFullscreenProps {
+  onMutateState: TOnMutateState;
+  playbackRate: number;
+  refParentContainer: any;
+  onToggleFullScreen: () => void;
+}
