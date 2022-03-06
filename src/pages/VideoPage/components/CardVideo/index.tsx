@@ -20,6 +20,10 @@ import { useCardVideo } from './hooks/useCardVideo';
 import { Title } from './components/TopButtonControl/Title';
 import { Setting } from './components/TopButtonControl/Setting';
 import { TopButtonControl } from './components/TopButtonControl';
+import { MiddleButtonControl } from './components/MiddleButtonControl';
+import { FastRewind } from './components/MiddleButtonControl/FastRewind';
+import { PlayArrow } from './components/MiddleButtonControl/PlayArrow';
+import { FastForward } from './components/MiddleButtonControl/FastForward';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
   const {
@@ -108,6 +112,14 @@ export const CardVideo = ({ video }: CardVideoProps) => {
                 onMutateState={updateState}
               />
             </TopButtonControl>
+
+            <MiddleButtonControl>
+              <FastRewind onRewind={handleRewind} />
+
+              <PlayArrow playing={playing} onMutateState={updateState} />
+              
+              <FastForward onFastForward={handleFastForward} />
+            </MiddleButtonControl>
 
             <RewinPauseForward
               playing={playing}

@@ -1,4 +1,6 @@
-import { VideoData } from "./interfaces";
+import { IMutateStateArg, VideoData } from "./interfaces";
+
+export type TOnMutateState = (state: IMutateStateArg) => void;
 
 export type VideoActionReducer = 
  | { type: 'SET_VIDEO_LIST', payload: VideoData[] }

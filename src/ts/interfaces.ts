@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { AxiosRequestHeaders, Method } from 'axios';
+import { TOnMutateState } from "./types";
 
 export interface VideoProviderProps {
   children: ReactElement | ReactElement[]
@@ -111,5 +112,22 @@ export interface ISettingProps {
   refParentContainer: any;
   defaultBrightness: number;
   defaultContrast: number;
-  onMutateState: (state: IMutateStateArg) => void;
+  onMutateState: TOnMutateState;
+}
+
+export interface IParentProps {
+  children: ReactElement | ReactElement[]
+}
+
+export interface IFastRewindProps {
+  onRewind: () => void;
+}
+
+export interface IPlayArrowProps {
+  playing: boolean;
+  onMutateState: TOnMutateState
+}
+
+export interface IFastForwardProps {
+  onFastForward: () => void;
 }
