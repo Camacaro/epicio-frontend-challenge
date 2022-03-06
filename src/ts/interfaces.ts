@@ -59,3 +59,57 @@ export interface IReactPlayerOnprogress {
   played: number
   playedSeconds: number
 }
+export interface IBottomControlsProps {
+  refParentContainer: any;
+  elapsedTime: string;
+  totalDuration: string;
+  played: number;
+  playing: boolean;
+  muted: boolean;
+  volume: number;
+  playbackRate: number;
+  onPlaybackRateChange: (value: number) => void;
+  onSeek: (e: any, newValue: any) => void;
+  onChangeDispayFormat: () => void;
+  onSeekMouseDown: (e: any) => void;
+  onSeekMouseUp: (e: any, newValue: any) => void;
+  onDuration: (e: number) => void;
+  onPlayPause: () => void;
+  onMuted: () => void;
+  onVolumeChange: (e: any, newValue: any) => void;
+  onVolumeSeekDown: (e: any, newValue: any) => void;
+  onToggleFullScreen: () => void;
+}
+
+export interface IUseCardVideoState {
+  playing: boolean;
+  brightness: number;
+  contrast: number;
+  oneTimeLight: boolean;
+  played: number; 
+  seeking: boolean;
+  duration: number;
+  muted: boolean;
+  volume: number;
+  playbackRate: number;
+}
+
+export interface IMutateStateArg {
+  playing?: boolean;
+  brightness?: number;
+  contrast?: number;
+  oneTimeLight?: boolean;
+  played?: number; 
+  seeking?: boolean;
+  duration?: number;
+  muted?: boolean;
+  volume?: number;
+  playbackRate?: number;
+}
+
+export interface ISettingProps {
+  refParentContainer: any;
+  defaultBrightness: number;
+  defaultContrast: number;
+  onMutateState: (state: IMutateStateArg) => void;
+}

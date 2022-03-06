@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Grid,
   Slider,
@@ -16,29 +18,8 @@ import {
   VolumeDown as VolumeDownIcon,
   Fullscreen as FullscreenIcon,
 } from '@mui/icons-material';
-import { useState } from "react";
 
-export interface IBottomControlsProps {
-  refParentContainer: any;
-  elapsedTime: string;
-  totalDuration: string;
-  played: number;
-  playing: boolean;
-  muted: boolean;
-  volume: number;
-  playbackRate: number;
-  onPlaybackRateChange: (value: number) => void;
-  onSeek: (e: any, newValue: any) => void;
-  onChangeDispayFormat: () => void;
-  onSeekMouseDown: (e: any) => void;
-  onSeekMouseUp: (e: any, newValue: any) => void;
-  onDuration: (e: number) => void;
-  onPlayPause: () => void;
-  onMuted: () => void;
-  onVolumeChange: (e: any, newValue: any) => void;
-  onVolumeSeekDown: (e: any, newValue: any) => void;
-  onToggleFullScreen: () => void;
-}
+import { IBottomControlsProps } from "../../../../../ts/interfaces";
 
 export const BottomControls = ({
   elapsedTime,
@@ -205,8 +186,6 @@ export const BottomControls = ({
         </IconButton>
         
       </Grid>
-
-
 
     </Grid>
   )

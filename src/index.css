@@ -76,3 +76,7 @@ code {
 .BottomControls__BottomIcons:hover {
   color: #fff!important;
 }
+
+.react-player__play-icon {
+  display: none;
+}

@@ -91,9 +91,6 @@ export const TitleSetting = ({
           vertical: 'top',
           horizontal: 'right',
         }}
-        sx={{
-          
-        }}
       >
           <Box sx={{ 
             width: 200,
