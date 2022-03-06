@@ -1,17 +1,7 @@
 // import { lazy } from 'react';
-import { LazyExoticComponent } from 'react';
 import { AboutPage } from '../pages/AboutPage';
-// import { VideoPage } from '../pages/VideoPage';
 import { VideoPage } from '../pages/VideoPage';
-
-type JSXComponent = () => JSX.Element;
-
-interface Route {
-  to: string;
-  path: string;
-  Component: LazyExoticComponent<JSXComponent> | JSXComponent;
-  name: string;
-}
+import { Route } from '../ts/interfaces';
 
 /**
  * Se puede usar lazy para que se cargue solo cuando se necesite

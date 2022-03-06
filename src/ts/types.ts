@@ -1,5 +1,7 @@
 import { IMutateStateArg, VideoData } from "./interfaces";
 
+export type JSXComponent = () => JSX.Element;
+
 export type TOnMutateState = (state: IMutateStateArg) => void;
 
 export type VideoActionReducer = 

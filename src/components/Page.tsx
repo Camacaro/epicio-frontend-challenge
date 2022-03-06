@@ -1,17 +1,8 @@
-import React, {
-  forwardRef,
-} from 'react';
+import { forwardRef } from 'react';
 import { Fade, Box, Container } from '@mui/material';
 import { Helmet } from 'react-helmet';
 
 import { useStyle } from '../hooks/useStyle';
-
-// interface Props {
-//   children: ReactElement | ReactElement[],
-//   title: string
-// }
-
-// export const Page = ({ children, title }: Props) => {
 
 export const Page = forwardRef(({
   children,

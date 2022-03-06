@@ -1,11 +1,11 @@
 import {
   Box,
   Card,
+  CardActionArea, 
   CardContent,
   CardMedia,
   IconButton,
   Typography,
-  CardActionArea 
 } from '@mui/material';
 
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material';

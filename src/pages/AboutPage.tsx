@@ -1,8 +1,8 @@
 import { 
-  Typography,
   Card,
   CardContent,
-  Link
+  Link,
+  Typography,
 } from "@mui/material"
 import { useTheme } from '@mui/material/styles';
 import { ArrowRight } from '@mui/icons-material';

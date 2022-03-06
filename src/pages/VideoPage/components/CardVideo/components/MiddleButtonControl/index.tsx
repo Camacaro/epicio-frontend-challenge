@@ -1,7 +1,5 @@
 
-import { 
-  Grid,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { IParentProps } from "../../../../../../ts/interfaces";
 

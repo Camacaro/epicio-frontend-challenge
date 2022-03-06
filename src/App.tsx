@@ -1,29 +1,13 @@
 import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
+import { LoadingScreen } from './components/LoadingScreen';
 import { MainLayout } from './layout';
 import { Navigation } from './routes/Navigation';
-import { LoadingScreen } from './components/LoadingScreen';
+import { theme } from './theme/theme';
 import { VideoProvider } from './context/VideoContext';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#0c1322'
-    },
-    secondary: {
-      main: '#4776e6',
-    },
-    // background: {
-    //   paper: '#4e88c7',
-    // },
-    text: {
-      primary: '#ffffff',
-    }
-  },
-});
 
 function App() {
   return (

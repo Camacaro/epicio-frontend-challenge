@@ -1,9 +1,5 @@
 import {SvgIcon} from '@mui/material';
 
-// interface Props {
-//   [key: string]: any
-// }
-
 export const LogoEpic = (props: any) => {
   return (    
     <SvgIcon {...props}>

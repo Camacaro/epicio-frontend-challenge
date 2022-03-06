@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { ReactElement, LazyExoticComponent } from "react";
 import { AxiosRequestHeaders, Method } from 'axios';
-import { TOnMutateState } from "./types";
+import { JSXComponent, TOnMutateState } from "./types";
 
 export interface VideoProviderProps {
   children: ReactElement | ReactElement[]
@@ -153,4 +153,15 @@ export interface IRateAndFullscreenProps {
   playbackRate: number;
   refParentContainer: any;
   onToggleFullScreen: () => void;
+}
+
+export interface IUseCardVideoProps {
+  video: VideoData;
+}
+
+export interface Route {
+  to: string;
+  path: string;
+  Component: LazyExoticComponent<JSXComponent> | JSXComponent;
+  name: string;
 }

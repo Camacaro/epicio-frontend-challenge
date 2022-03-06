@@ -1,6 +1,8 @@
+import { TIME_FORMAT } from "../../../../../ts/constant";
+
 export const format = (seconds: any) => {
   if (isNaN(seconds)) {
-    return `00:00`;
+    return TIME_FORMAT;
   }
 
   const date = new Date(seconds * 1000);

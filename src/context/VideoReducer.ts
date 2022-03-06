@@ -22,7 +22,6 @@ export const VideoReducer = (state:VideoInitialStateContext, action:VideoActionR
         currentVideo: action.payload
       }
     
-
     default:
       return state;
 

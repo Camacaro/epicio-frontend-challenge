@@ -1,11 +1,7 @@
-import { ReactElement } from 'react';
+import { IParentProps } from '../ts/interfaces';
 import { MainNavbar } from './MainNavbar';
 
-export interface Props {
-  children?: ReactElement | ReactElement[]
-}
-
-export const MainLayout = ({ children }: Props) => {
+export const MainLayout = ({ children }: IParentProps) => {
 
   return (
     <div className="MainLayout">

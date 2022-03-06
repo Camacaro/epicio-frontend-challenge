@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player'
+
 import { 
   Box,
   Button,
@@ -11,23 +12,20 @@ import {
   Typography,  
 } from "@mui/material";
 
-import { BottomControls } from './components/BottomControls';
-import { CardVideoProps } from '../../../../ts/interfaces';
-import { MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
-import { RewinPauseForward } from './components/RewinPauseForward';
-import { TitleSetting } from './components/TitleSetting';
-import { useCardVideo } from './hooks/useCardVideo';
-import { Title } from './components/TopButtonControl/Title';
-import { Setting } from './components/TopButtonControl/Setting';
-import { TopButtonControl } from './components/TopButtonControl';
-import { MiddleButtonControl } from './components/MiddleButtonControl';
-import { FastRewind } from './components/MiddleButtonControl/FastRewind';
-import { PlayArrow } from './components/MiddleButtonControl/PlayArrow';
-import { FastForward } from './components/MiddleButtonControl/FastForward';
 import { BottomButtonControl } from './components/BottomButtonControl';
+import { CardVideoProps } from '../../../../ts/interfaces';
+import { FastForward } from './components/MiddleButtonControl/FastForward';
+import { FastRewind } from './components/MiddleButtonControl/FastRewind';
+import { MAX_LENGTH_DESCRIPTION } from '../../../../ts/constant';
+import { MiddleButtonControl } from './components/MiddleButtonControl';
+import { PlayArrow } from './components/MiddleButtonControl/PlayArrow';
 import { ProgressBar } from './components/BottomButtonControl/ProgressBar';
-import { VolumeAndDuration } from './components/BottomButtonControl/VolumeAndDuration';
 import { RateAndFullscreen } from './components/BottomButtonControl/RateAndFullscreen';
+import { Setting } from './components/TopButtonControl/Setting';
+import { Title } from './components/TopButtonControl/Title';
+import { TopButtonControl } from './components/TopButtonControl';
+import { useCardVideo } from './hooks/useCardVideo';
+import { VolumeAndDuration } from './components/BottomButtonControl/VolumeAndDuration';
 
 export const CardVideo = ({ video }: CardVideoProps) => {
   const {
@@ -35,20 +33,11 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     cutDescription,
     elapsedTime,
     handleDisplayFormat,
-    handleDuration,
     handleFastForward,
     handleMouseMove,
-    handleMuted,
-    handlePlaybackRate,
-    handlePlayPause,
     handleProgress,
     handleRewind,
-    handleSeekChange,
-    handleSeekMouseDown,
     handleSeekMouseUp,
-    handleSettings,
-    handleVolumeChange,
-    handleVolumeSeekDown,
     hanldeMouseLeave,
     isLight,
     onClickPreview,
@@ -62,12 +51,24 @@ export const CardVideo = ({ video }: CardVideoProps) => {
     updateState,
   } = useCardVideo({ video });
 
-  const { playing, brightness, contrast, played, muted, volume, playbackRate } = state;
-  const { description, sources, title } = video;
+  const { 
+    brightness, 
+    contrast, 
+    muted, 
+    playbackRate,
+    played, 
+    playing, 
+    volume, 
+  } = state;
+
+  const { 
+    description, 
+    sources, 
+    title 
+  } = video;
 
   return (
     <Card elevation={0}> 
-
       <CardMedia 
         ref={playerContainerRef}
         id="card-media-player"
@@ -78,22 +79,22 @@ export const CardVideo = ({ video }: CardVideoProps) => {
         onMouseLeave={hanldeMouseLeave}
       >
         <ReactPlayer 
-          ref={playerRef}
-          url={sources[0]}
-          width={'100%'}
-          height={'100%'}
           controls={false}
-          stopOnUnmount={true}
+          height={'100%'}
           light={isLight()}
-          onClickPreview={onClickPreview}
-          playing={playing}
-          onProgress={handleProgress}
           muted={muted}
-          volume={volume}
+          onClickPreview={onClickPreview}
+          onProgress={handleProgress}
           playbackRate={playbackRate}
+          playing={playing}
+          ref={playerRef}
+          stopOnUnmount={true}
           style={{
             filter: `brightness(${brightness}) contrast(${contrast})`,
           }}
+          url={sources[0]}
+          volume={volume}
+          width={'100%'}
         />
         
         <div 
@@ -149,31 +150,8 @@ export const CardVideo = ({ video }: CardVideoProps) => {
                 onToggleFullScreen={toggleFullScreen}
               />
             </BottomButtonControl>
-
-            {/* <BottomControls
-              refParentContainer={playerContainerRef}
-              playing={playing}
-              played={played}
-              elapsedTime={elapsedTime}
-              muted={muted}
-              volume={volume}
-              totalDuration={totalDuration}
-              playbackRate={playbackRate}
-              onSeek={handleSeekChange}
-              onSeekMouseDown={handleSeekMouseDown}
-              onChangeDispayFormat={handleDisplayFormat}
-              onSeekMouseUp={handleSeekMouseUp}
-              onDuration={handleDuration}
-              onPlayPause={handlePlayPause}
-              onMuted={handleMuted}
-              onVolumeChange={handleVolumeChange}
-              onVolumeSeekDown={handleVolumeSeekDown}
-              onPlaybackRateChange={handlePlaybackRate}
-              onToggleFullScreen={toggleFullScreen}
-            /> */}
           </Grid>
         </div>
-
       </CardMedia>
 
       <CardContent>
@@ -201,7 +179,6 @@ export const CardVideo = ({ video }: CardVideoProps) => {
           </Button>
         </CardActions>
       )}
-
     </Card>
   )
 }

@@ -1,12 +1,10 @@
-import {
-  Grid,
-  Box,
-} from "@mui/material";
+import { Grid, Box } from "@mui/material";
+
+import { CardVideo } from "./components/CardVideo/index";
+import { ListCardVideo } from './components/ListCardVideo';
 import { Page } from "../../components/Page";
 import { SkeletonVideo } from "../../components/SkeletonVideo";
 import { useVideoContext } from "../../context/VideoContext";
-import { CardVideo } from "./components/CardVideo/index";
-import { ListCardVideo } from './components/ListCardVideo';
 
 export const VideoPage = () => {
   const { isLoading, videoState, assignVideo } = useVideoContext();
