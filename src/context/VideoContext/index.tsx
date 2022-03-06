@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import { useService } from '../hooks/useService';
-import { URL_API } from '../ts/constant';
-import { VideoInitialStateContext, VideoProviderProps, VideoData } from '../ts/interfaces';
+import { useService } from '../../hooks/useService';
+import { URL_API } from '../../ts/constant';
+import { VideoInitialStateContext, VideoProviderProps, VideoData } from '../../ts/interfaces';
 import { doAssignVideo, doSaveNameCategory, doSaveVideo } from './actions';
 import { VideoReducer } from './VideoReducer';
 

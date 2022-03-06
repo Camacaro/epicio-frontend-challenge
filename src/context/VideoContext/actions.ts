@@ -1,5 +1,5 @@
-import { VideoData } from '../ts/interfaces';
-import { VideoActionReducer } from '../ts/types';
+import { VideoData } from '../../ts/interfaces';
+import { VideoActionReducer } from '../../ts/types';
 
 export const doSaveVideo = (video: VideoData[]): VideoActionReducer => ({
   type: 'SET_VIDEO_LIST',

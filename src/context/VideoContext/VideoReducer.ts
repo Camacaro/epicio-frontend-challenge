@@ -1,5 +1,5 @@
-import { VideoInitialStateContext } from "../ts/interfaces";
-import { VideoActionReducer } from "../ts/types";
+import { VideoInitialStateContext } from "../../ts/interfaces";
+import { VideoActionReducer } from "../../ts/types";
 
 export const VideoReducer = (state:VideoInitialStateContext, action:VideoActionReducer) => {
   switch (action.type) {

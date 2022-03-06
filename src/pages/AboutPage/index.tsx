@@ -21,7 +21,7 @@ export const AboutPage = () => {
   const theme = useTheme();
 
   return (
-    <Page title="Video">
+    <Page title="Sobre el Proyecto">
 
       <Typography variant="h3" gutterBottom component="div">
         Sobre el Proyecto
@@ -46,7 +46,7 @@ export const AboutPage = () => {
           />
 
           <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center' }}>
-            <ArrowRight /> &nbsp; Para el video use la libreria  &nbsp; <Link href="https://www.npmjs.com/package/react-player" target={'_blank'} sx={{ color: 'white' }}> "react-player" </Link>
+            <ArrowRight /> &nbsp; Para el video usé la libreria  &nbsp; <Link href="https://www.npmjs.com/package/react-player" target={'_blank'} sx={{ color: 'white' }}> "react-player", pero hice su controlador. </Link>
           </Typography>
 
           <Description
