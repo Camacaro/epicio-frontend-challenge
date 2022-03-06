@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Camacaro/epicio-frontend-challenge/static/css/main.3792ecf0.css",
-    "main.js": "/Camacaro/epicio-frontend-challenge/static/js/main.48127a1d.js",
-    "static/js/787.3bcd4d9f.chunk.js": "/Camacaro/epicio-frontend-challenge/static/js/787.3bcd4d9f.chunk.js",
-    "index.html": "/Camacaro/epicio-frontend-challenge/index.html",
-    "main.3792ecf0.css.map": "/Camacaro/epicio-frontend-challenge/static/css/main.3792ecf0.css.map",
-    "main.48127a1d.js.map": "/Camacaro/epicio-frontend-challenge/static/js/main.48127a1d.js.map",
-    "787.3bcd4d9f.chunk.js.map": "/Camacaro/epicio-frontend-challenge/static/js/787.3bcd4d9f.chunk.js.map"
+    "main.css": "/epicio-frontend-challenge/static/css/main.3792ecf0.css",
+    "main.js": "/epicio-frontend-challenge/static/js/main.dd8bac18.js",
+    "static/js/787.3bcd4d9f.chunk.js": "/epicio-frontend-challenge/static/js/787.3bcd4d9f.chunk.js",
+    "index.html": "/epicio-frontend-challenge/index.html",
+    "main.3792ecf0.css.map": "/epicio-frontend-challenge/static/css/main.3792ecf0.css.map",
+    "main.dd8bac18.js.map": "/epicio-frontend-challenge/static/js/main.dd8bac18.js.map",
+    "787.3bcd4d9f.chunk.js.map": "/epicio-frontend-challenge/static/js/787.3bcd4d9f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3792ecf0.css",
-    "static/js/main.48127a1d.js"
+    "static/js/main.dd8bac18.js"
   ]
 }
