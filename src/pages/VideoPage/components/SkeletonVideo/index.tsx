@@ -3,7 +3,8 @@ import {
   Box,
   Skeleton
 } from "@mui/material";
-import { Page } from "./Page";
+
+import { Page } from "../../../../components/Page";
 
 export const SkeletonVideo = () => {
   return (

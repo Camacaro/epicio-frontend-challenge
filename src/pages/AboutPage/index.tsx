@@ -7,7 +7,7 @@ import {
 import { useTheme } from '@mui/material/styles';
 import { ArrowRight } from '@mui/icons-material';
 
-import { Page } from "../components/Page"
+import { Page } from "../../components/Page"
 
 const Description = ({ msg }: { msg: string }) => {
   return (
@@ -64,6 +64,5 @@ export const AboutPage = () => {
     </Page>
   )
 }
-
 
 export default AboutPage

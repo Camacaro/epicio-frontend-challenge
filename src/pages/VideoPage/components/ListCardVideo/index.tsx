@@ -10,8 +10,8 @@ import {
 
 import { PlayArrow as PlayArrowIcon } from '@mui/icons-material';
 
-import { ListCardVideoProps } from '../../../ts/interfaces';
-import { useStyle } from '../../../hooks/useStyle';
+import { ListCardVideoProps } from '../../../../ts/interfaces';
+import { useStyle } from '../../../../hooks/useStyle';
 
 export const ListCardVideo = ({ video, handleChengeVideo }: ListCardVideoProps) => {
   const { styleListCardVideo } = useStyle();
