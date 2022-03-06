@@ -11,7 +11,7 @@ pausa y volumen.
 componentes solicitados y que DisplayComponent pueda ser controlado controlar a través
 de ControlsComponent.
 * Los recursos de video podrás obtenerlos a partir del siguiente JSON devuelto por la API a
-través de un HTTP GET Method: [jsonbin](https://api.jsonbin.io/b/5ef409df2406353b2e0c4068). 
+través de un HTTP GET Method: [jsonbin](https://api.jsonbin.io/b/5ef409df2406353b2e0c4068){:target="_blank"}. 
 * Por último, deberás hostear el proyecto en GitHub, GitLab o Bitbucket con acceso público
 a él.
 
