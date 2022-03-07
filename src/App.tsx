@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -13,13 +13,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Suspense fallback={<LoadingScreen />} >
-        <HashRouter>
+        <BrowserRouter>
           <MainLayout>
             <VideoProvider>
               <Navigation />
             </VideoProvider>
           </MainLayout>
-        </HashRouter>
+        </BrowserRouter>
       </Suspense>
     </ThemeProvider>
   );
