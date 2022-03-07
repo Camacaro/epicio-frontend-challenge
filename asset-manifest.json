@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/epicio-frontend-challenge/static/css/main.3792ecf0.css",
-    "main.js": "/epicio-frontend-challenge/static/js/main.47be811f.js",
+    "main.js": "/epicio-frontend-challenge/static/js/main.079cafd4.js",
     "static/js/787.b79d2cd0.chunk.js": "/epicio-frontend-challenge/static/js/787.b79d2cd0.chunk.js",
     "index.html": "/epicio-frontend-challenge/index.html",
     "main.3792ecf0.css.map": "/epicio-frontend-challenge/static/css/main.3792ecf0.css.map",
-    "main.47be811f.js.map": "/epicio-frontend-challenge/static/js/main.47be811f.js.map",
+    "main.079cafd4.js.map": "/epicio-frontend-challenge/static/js/main.079cafd4.js.map",
     "787.b79d2cd0.chunk.js.map": "/epicio-frontend-challenge/static/js/787.b79d2cd0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3792ecf0.css",
-    "static/js/main.47be811f.js"
+    "static/js/main.079cafd4.js"
   ]
 }
