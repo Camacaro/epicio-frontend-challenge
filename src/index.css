@@ -57,10 +57,6 @@ code {
   background: rgba(0,0,0,0.6);
 }
 
-.css-4w3m95-MuiPaper-root-MuiPopover-paper {
-  background: rgba(0,0,0,0.6)!important;
-}
-
 .BottomControls__BottomIcons {
   color: #777!important;
   transform: scale(0.9);
@@ -78,4 +74,9 @@ code {
   #card-media-player div video {
     height: 350px!important;
   }
+}
+
+#popover-brightness-contrast div:nth-child(3),
+#rate-popover div:nth-child(3) {
+  background: rgba(0,0,0,0.6)!important;
 }

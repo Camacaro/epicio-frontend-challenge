@@ -28,7 +28,7 @@ export const RateAndFullscreen = ({
   const handleClose = () => setAnchorEl(null);
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "rate-popover" : undefined;
 
   return (
     <Grid item>

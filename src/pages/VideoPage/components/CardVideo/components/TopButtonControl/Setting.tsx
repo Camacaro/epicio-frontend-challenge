@@ -77,11 +77,9 @@ export const Setting = ({
           vertical: 'top',
           horizontal: 'right',
         }}
+        id="popover-brightness-contrast"
       >
-        <Box sx={{ 
-          width: 200,
-          
-        }}>
+        <Box sx={{ width: 200 }}>
           <Stack spacing={2} direction="row" sx={{ mb: 1, mt: 1, mr: 3}} alignItems="center" >
             <BrightnessLowIcon sx={{ ml: 1}} />
               <Slider
